@@ -1,0 +1,119 @@
+
+.update-store .filter{
+    width:100%;
+    border: 2px solid #262626;
+    padding: 26px 21px;
+    margin-bottom: 30px;
+}
+.update-store .w-30{
+    width: 30%;
+}
+.update-store .w-33{
+    width: 33%;
+}
+.update-store .search-icon{
+    margin-left: 18px;
+}
+
+.update-store .update-btn{
+    padding: 15px;
+}
+.update-store .mt-19{
+    margin-top: 19px;
+}
+.update-store .mt-33{
+    margin-top: 33px;
+}
+
+.update-store .btn{
+    width: 257px;
+    max-width: 90%;
+    float: right;
+    margin-top: 11px;
+}
+
+
+
+.MuiDataGrid-cell{
+    color: #fff;
+    border-left: 1px solid #8B8B8B;
+    outline: none !important;
+    color: #fff;
+    font-weight: 300 !important;
+    font-size: 16px;
+    border-color: #8B8B8B !important;
+}
+
+.MuiDataGrid-columnHeader,.css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root{
+    color: #fff !important;
+    outline: none !important;
+}
+.MuiDataGrid-columnHeader{
+    border-left: 1px solid #8B8B8B;
+    color: #C3C3C3 !important;
+    font-weight: bold !important;
+    font-size: 16px;
+
+}
+
+
+.MuiDataGrid-columnHeaderCheckbox,.MuiDataGrid-cellCheckbox{
+    border-left: none;
+}
+.css-1refp4-MuiDataGrid-root .MuiDataGrid-iconSeparator{
+    display: none;
+}
+.css-1refp4-MuiDataGrid-root .MuiDataGrid-row.Mui-selected,.css-1refp4-MuiDataGrid-root .MuiDataGrid-row.Mui-selected:hover{
+    background-color: none;
+}
+.css-azaegi-MuiButtonBase-root-MuiButton-root{
+    color: #000 !important;
+}
+.MuiDataGrid-columnSeparator{
+    display: none !important;
+}
+.css-etrw2r-MuiDataGrid-root{
+    border: none !important;
+}
+.css-204u17-MuiDataGrid-main{
+    border:1px solid #8B8B8B
+}
+.css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon{
+    color:#fff !important;
+}
+.css-ptiqhd-MuiSvgIcon-root{
+    color:#fff;
+}
+.css-1j9kmqg-MuiDataGrid-toolbarContainer{
+    padding: 0 !important;
+}
+
+.css-1j77mfl-MuiInputBase-root-MuiInput-root input[type]{
+    color: #fff;
+
+}
+.MuiDataGrid-toolbarContainer .MuiButton-root:first-of-type{
+    display: none !important;
+}
+
+
+@media only screen and (max-width: 1023px) {
+
+.update-store .w-30,.update-store .w-33{
+    width: 100%;
+    margin-top: 19px;
+}
+
+.update-store .update-btn {
+    padding: 8px;
+}
+.update-store .filter{
+    padding: 13px 21px;
+}
+
+}
+
+
+
+
+

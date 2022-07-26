@@ -1,0 +1,60 @@
+.productdb{
+    width: 80%;
+}
+
+.productdb .search-icon{
+    margin-left: 18px;
+}
+.productdb .search{
+float: right;
+}
+
+.productdb .mt-7{
+    margin-top: 7px;
+}
+.productdb .filter{
+    width:1088px;
+    max-width: 90%;
+    border: 2px solid #262626;
+    padding: 13px 40px;
+    margin-bottom: 30px;
+}
+
+.productdb .input-text {
+    padding: 6px 22px;
+}
+.productdb .dropdown .flex{
+    width: 100%;
+}
+.productdb .w-41{
+    width: 41%;
+}
+.productdb .w-47{
+    width: 47%;
+}
+.productdb .w-100{
+    width: 100%;
+}
+
+.MuiDataGrid-main .css-i4bv87-MuiSvgIcon-root,.dropdawn-parent .css-i4bv87-MuiSvgIcon-root{
+    color: white;
+}
+
+@media only screen and (max-width: 1023px) {
+    .productdb .w-47,.productdb .w-41,.productdb {
+        width: 100%;
+    }
+    .productdb .filter{
+        width: 100%;
+        max-width: initial;
+        padding: 13px 15px;
+    }
+    .productdb .w-47,.productdb .search{
+        margin-top: 10px;
+    }
+   
+}
+
+
+
+

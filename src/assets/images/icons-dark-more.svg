@@ -1,0 +1,6 @@
+<svg id="icons_dark_more" data-name="icons/dark/more" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <rect id="bg" width="24" height="24" fill="#1d1d1d" opacity="0"/>
+  <circle id="Oval" cx="1" cy="1" r="1" transform="translate(10.5 17)" fill="#c3c3c3" stroke="#c3c3c3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3"/>
+  <circle id="Oval-2" data-name="Oval" cx="1" cy="1" r="1" transform="translate(10.5 11)" fill="#c3c3c3" stroke="#c3c3c3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3"/>
+  <circle id="Oval-3" data-name="Oval" cx="1" cy="1" r="1" transform="translate(10.5 5)" fill="#c3c3c3" stroke="#c3c3c3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3"/>
+</svg>

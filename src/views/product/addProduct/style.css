@@ -1,0 +1,184 @@
+.add-product .filter {
+    margin-bottom: 30px;
+}
+
+.add-product .w-32 {
+    width: 32%;
+}
+
+.add-product .input-text {
+    padding: 7px 20px;
+}
+
+.add-product .mt-40 {
+    margin-top: 40px;
+}
+
+.add-product .line-h {
+    height: 2px;
+    width: 100%;
+    background-color: #707070;
+}
+
+.add-product .mt-10 {
+    margin-top: 10px;
+}
+
+.add-product .mb-40 {
+    margin-bottom: 40px;
+
+}
+
+.add-product .w-38 {
+    width: 38%;
+}
+
+.add-product .w-53 {
+    width: 53%;
+}
+
+.add-product .css-19kzrtu {
+    padding: 40px 0 0 0;
+}
+
+.add-product .w-60 {
+    width: 60%;
+    margin-top: 44px;
+}
+
+.add-product .add-btn {
+    background-color: var(--white);
+    height: 29px;
+    width: 29px;
+    display: flex;
+    font-size: 18px;
+    border-radius: 50%;
+    color: var(--black);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 43px;
+}
+
+/* select */
+.MuiSelect-select:hover {
+    border: none;
+}
+
+.MuiSelect-select {
+    outline: none;
+}
+
+.add-product .selecte svg {
+    color: var(--black) !important;
+}
+
+.tab {
+    color: #fff !important;
+    padding: 17px 70px !important;
+    border: 2px solid #262626 !important;
+    font-size: 16px;
+    font-weight: 400 !important;
+    margin-right: 26px !important;
+}
+
+.tab.Mui-selected {
+    color: white !important;
+    border: 2px solid #fff !important;
+    font-weight: bold !important;
+
+}
+.attribute .css-13zgqbm-MuiTabs-indicator {
+    background-color: #fff !important;
+}
+.main-tap .css-13zgqbm-MuiTabs-indicator {
+    display: none;
+}
+.add-product .variation-cart{
+    border:2px solid #262626;
+    padding: 18px 17px 16px 17px;
+    margin-left: 20px;
+    min-width: 105px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.add-product .tab-att {
+    color: #C3C3C3 !important;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.add-product .tab-att.Mui-selected {
+    color: #fff !important;
+    font-weight: bold;
+
+}
+.add-product .unselect{
+    position: absolute;
+    top: -13px;
+    right: -4px;
+}
+.add-product .w-57{
+    width: 57%;
+}
+.add-product .mr-24{
+    margin-right: 24px;
+}
+.add-product .mt-24{
+    margin-top: 24px;
+}
+.add-product .btn-next{
+    width: 257px;
+    max-width: 90%;
+    float: right;
+}
+.add-product .dep .css-i4bv87-MuiSvgIcon-root{
+    color: var(--white);
+}
+.add-product .css-j204z7-MuiFormControlLabel-root .MuiFormControlLabel-label.Mui-disabled {
+    color: rgb(195 195 195 / 38%);
+}
+.add-product .picture-parent{
+    width: 173px;
+    max-width: 90%;
+}
+.add-product .picture-btn{
+    width: 100%;
+    height: 173px;
+    border-radius: 4px;
+    background-color: #818181;
+    
+}
+.add-product .picture-btn .icon-btn{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.add-product .mg-30{
+    margin: 0 30px 0 30px;
+}
+.add-product .attriute{
+    width: 135px;
+    max-width: 90%;
+}
+.add-product .line-pic:first-of-type .default{
+    color: var(--white) !important;
+    font-weight: bold !important;
+}
+.add-product .line-pic{
+    margin-bottom: 67px;
+}
+
+.add-product .picture-porduct{
+    height: 173px;
+}
+.add-product .picture-porduct img{
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+

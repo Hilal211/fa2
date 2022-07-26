@@ -1,0 +1,609 @@
+body {
+  margin: 0;
+  background-color: var(--black);
+  color: var(--gray);
+  font-family: 'Helvetica';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+html,
+body {
+  box-sizing: border-box;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+:root {
+  --black: #000000;
+  --gray: #C3C3C3;
+  --white: #FFFFFF;
+  --gray2: #262626;
+  --gray3: #252525;
+  --gray4: #707070;
+}
+
+/* bg */
+.bg-second-gray {
+  background-color: var(--gray2);
+}
+.col-black {
+  color: var(--black);
+}
+.col-white {
+  color: var(--white);
+}
+
+.col-gray {
+  color: var(--gray);
+}
+
+.border-third-gray {
+  border: 2px solid var(--gray3);
+}
+
+.border-forth-gray {
+  border: 2px solid var(--gray4);
+}
+
+.container {
+  width: 1600px;
+  max-width: 90%;
+  margin: auto;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+/* header */
+header {
+  margin: 47px 0 95px 0;
+}
+
+#logo-header {
+  margin-right: 20px;
+}
+
+header .links div {
+  margin-left: 70px;
+  cursor: pointer;
+}
+
+header .links div:first-of-type {
+  margin: 0;
+}
+
+/* nav */
+.css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
+  position: initial !important;
+  background-color: var(--black) !important;
+}
+
+/* Background */
+.bg-black {
+  background-color: var(--black);
+}
+
+
+/* button */
+.btn {
+  width: 100%;
+  cursor: pointer;
+}
+
+.btn .text {
+  border: 2px solid #262626;
+  padding: 24px 0 24px 40px;
+  width: 100%;
+  font-size: 18px;
+  border-right: none;
+
+}
+
+.btn .box-arrow {
+  background-color: #262626;
+  padding: 22px 20px 20px 19px;
+}
+
+/* dropdown */
+.dropdown .box-arrow {
+  background-color: #262626;
+  padding: 19px 12px 12px 12px;
+}
+
+.dropdawn {
+  width: -webkit-fill-available;
+}
+
+.dropdawn-parent {
+  border: #262626 2px solid !important;
+  padding-left: 24px;
+}
+
+.dropdawn-parent .line {
+  width: 3px;
+  height: 25px;
+  margin: 0 15px;
+  background-color: var(--gray);
+}
+
+.dropdawn .MuiIconButton-root {
+  background: #262626 !important;
+  border-radius: 0 !important;
+  padding: 17px 12px !important;
+  margin-right: -9px !important;
+  margin-top: -15px !important;
+  z-index: 9;
+}
+
+.dropdawn input {
+  color: white;
+}
+
+.MuiAutocomplete-root {
+  color: white;
+}
+
+.MuiAutocomplete-hasPopupIcon.css-eozd4h-MuiAutocomplete-root .MuiOutlinedInput-root {
+  padding: 0 !important;
+}
+
+.css-eozd4h-MuiAutocomplete-root .MuiAutocomplete-clearIndicator {
+  display: none !important;
+}
+
+.css-eozd4h-MuiAutocomplete-root .MuiOutlinedInput-root .MuiAutocomplete-input {
+  padding: 17px 53px 17px 6px !important;
+}
+
+/* input-text */
+.input-text,textarea {
+  border: 2px solid #262626;
+  padding: 22px 20px;
+}
+textarea{
+  background-color: transparent !important;
+  outline: none;
+  color: var(--white);
+  font-size: 18px;
+  padding: 15px 20px;
+  width: 100%;
+}
+/* textarea:focus-visible{
+  bor
+} */
+
+.input-text .line {
+  width: 2px;
+  height: 25px;
+  margin: 0 15px;
+  background-color: var(--gray);
+}
+
+.input-text input[type='text'],
+.input-text input[type='password'] {
+  color: var(--white);
+  font-size: 18px;
+}
+
+::placeholder {
+  color: var(--gray) !important;
+  font-size: 18px !important;
+  opacity: 1 !important;
+}
+
+.css-jzlrlv-MuiInputBase-root-MuiInput-root:after {
+  border: none !important;
+}
+
+.css-1czpwd9-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline,
+.css-pawps9-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: transparent !important;
+}
+
+.css-eozd4h-MuiAutocomplete-root .MuiOutlinedInput-root {
+  padding: 0 !important;
+}
+
+
+@font-face {
+  font-family: 'Helvetica';
+  src: url('./assets/fonts/Helvetica-Bold.eot');
+  src: url('./assets/fonts/Helvetica-Bold.eot?#iefix') format('embedded-opentype'),
+    url('./assets/fonts/Helvetica-Bold.woff2') format('woff2'),
+    url('./assets/fonts/Helvetica-Bold.woff') format('woff'),
+    url('./assets/fonts/Helvetica-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica';
+  src: url('./assets/fonts/Helvetica-Light.eot');
+  src: url('./assets/fonts/Helvetica-Light.eot?#iefix') format('embedded-opentype'),
+    url('./assets/fonts/Helvetica-Light.woff2') format('woff2'),
+    url('./assets/fonts/Helvetica-Light.woff') format('woff'),
+    url('./assets/fonts/Helvetica-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica';
+  src: url('./assets/fonts/Helvetica.eot');
+  src: url('./assets/fonts/Helvetica.eot?#iefix') format('embedded-opentype'),
+    url('./assets/fonts/Helvetica.woff2') format('woff2'),
+    url('./assets/fonts/Helvetica.woff') format('woff'),
+    url('./assets/fonts/Helvetica.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.light {
+  font-weight: 300;
+}
+
+.regular {
+  font-weight: 400;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.fs-12 {
+  font-size: 12px;
+}
+
+.fs-14 {
+  font-size: 14px;
+}
+
+.fs-16 {
+  font-size: 16px;
+}
+
+.fs-18 {
+  font-size: 18px;
+}
+.fs-20 {
+  font-size: 20px;
+}
+.fs-24 {
+  font-size: 24px;
+}
+
+.flex {
+  display: flex;
+  flex: none;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-col.reverse {
+  flex-direction: column-reverse;
+}
+
+.flex-children>* {
+  flex: 1;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-i-center {
+  align-items: center;
+}
+
+.align-i-start {
+  align-items: flex-start;
+}
+
+.align-i-end {
+  align-items: flex-end;
+}
+
+.align-i-stretch {
+  align-items: stretch;
+}
+
+.align-s-center {
+  align-self: center;
+}
+
+.align-s-start {
+  align-self: flex-start;
+}
+
+.align-s-end {
+  align-self: flex-end;
+}
+
+.align-c-start {
+  align-content: flex-start;
+}
+
+.center {
+  text-align: center;
+}
+
+/* signin signup */
+.signin .ml-45,
+.signup .ml-45 {
+  margin-left: 45px;
+}
+
+.signin .logos,
+.signup .logos {
+  width: 48%;
+}
+
+.signin .fieldes,
+.signup .fieldes {
+  width: 49%;
+}
+
+/* loader */
+.loader {
+  background: #ffffff3d;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+}
+
+.loader .MuiCircularProgress-root {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* sideNav */
+.MuiDrawer-root {
+  width: 17%;
+}
+
+.content {
+  width: 83%;
+  margin-bottom: 50px;
+}
+
+/* table */
+/* table,.MuiTableContainer-root.css-41abqd-MuiTableContainer-root{
+  overflow: hidden !important;
+  height: 100% !important;
+} */
+.css-1fw5qro-MuiPaper-root {
+  border-radius: 0 !important;
+  background-color: transparent !important;
+}
+
+td,
+th {
+  color: white !important;
+  font-weight: 300 !important;
+}
+
+td,
+th,
+tr {
+  border: 1px solid #8B8B8B;
+  font-size: 16px;
+}
+
+th {
+  color: #C3C3C3 !important;
+  font-weight: bold !important;
+}
+
+table,
+th {
+  background-color: #000000 !important;
+  border-bottom: 1px solid #8B8B8B;
+}
+
+.css-1ex1afd-MuiTableCell-root,
+.css-y8ay40-MuiTableCell-root {
+  border-bottom: none !important;
+}
+
+.MuiTablePagination-root {
+  background-color: #000000 !important;
+  color: white !important;
+
+}
+
+/* generale */
+.selected span,
+.selected {
+  font-weight: bold;
+  color: var(--white);
+}
+
+.mobile {
+  display: none !important;
+}
+.relative{
+  position: relative;
+}
+
+/* search input */
+.table .css-1j77mfl-MuiInputBase-root-MuiInput-root{
+  border:#262626 2px solid;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+@media only screen and (max-width: 1517px) {
+  header .links div {
+    margin-left: 30px;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .content {
+    margin-left: 15px;
+  }
+
+  header .links div,
+  header .pointer {
+    font-size: 15px;
+  }
+
+  #logo-name {
+    width: 83px;
+  }
+
+  #logo-header {
+    width: 50px;
+    margin-right: 8px;
+  }
+
+  header .links div {
+    margin-left: 25px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+
+  /* signin signup */
+  .signin .logo img,
+  .signup .logo img {
+    width: 100px;
+  }
+
+  .signin .logo_text img,
+  .signup .logo_text img {
+    width: 150px;
+  }
+}
+
+
+
+@media only screen and (max-width: 1023px) {
+  .flex-row.responsive {
+    flex-direction: column;
+  }
+
+  .fs-18 {
+    font-size: 14px;
+  }
+
+  .input-text input[type='text'],
+  .input-text input[type='password'] {
+    font-size: 13px;
+  }
+
+  ::placeholder {
+    font-size: 13px !important;
+  }
+
+  /* signin signup */
+  .signin .responsive {
+    align-items: center;
+  }
+
+  .signin .logos,
+  .signup .logos {
+    justify-content: center;
+    margin: 50px 0 30px 0;
+  }
+
+  .signin .logos,
+  .signin .fieldes,
+  .signup .logos,
+  .signup .fieldes {
+    width: 100%;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: block !important;
+  }
+
+  header {
+    margin: 0;
+  }
+
+  .css-i4bv87-MuiSvgIcon-root {
+    color: var(--gray) !important;
+  }
+
+  .content {
+    margin-top: 75px;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .btn {
+    width: 130px;
+    max-width: 90%;
+  }
+
+  .btn .text {
+    border: 2px solid #262626;
+    padding: 13px 0 12px 14px;
+    width: 100%;
+    font-size: 14px;
+    border-right: none;
+  }
+
+  .btn .box-arrow {
+    background-color: #262626;
+    padding: 8px 10px 7px 10px;
+  }
+}
+
+@media only screen and (max-width: 425px) {}

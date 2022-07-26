@@ -1,0 +1,24 @@
+
+.signup .mt-20 {
+  margin-top: 20px;
+}
+.signup .btn{
+  width: 300px;
+  max-width: 90%;
+}
+
+.signup .ml-20 {
+  margin-left: 20px;
+  margin-top: 7px;
+}
+
+.signup .mb-30{
+  margin-bottom: 30px;
+}
+.container-signup {
+  width: 1200px;
+  max-width: 90%;
+  margin: auto;
+  margin-bottom: 50px;
+}
+
