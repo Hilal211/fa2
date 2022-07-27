@@ -157,20 +157,49 @@ function AddProduct() {
     const handleClose = () => {
         setOpen(false);
     };
-    function pub() {
-        let tmp = variationSelected;
-        willfuckussowewishfuckitfirst(tmp, null)
-    }
-    const willfuckussowewishfuckitfirst = (object, item) => {
-        let tmp = object;
-        if (Object.keys(tmp).length === 0) {
+    // function pub() {
+    //     let tmp = variationSelected;
+    //     willfuckussowewishfuckitfirst(tmp, null)
+    // }
+    // const willfuckussowewishfuckitfirst = (object, item) => {
+    //     let tmp = object;
+    //     if (Object.keys(tmp).length === 0) {
 
-        } else {
+    //     } else {
 
-            delete tmp[Object.keys(tmp)[0]];
-            willfuckussowewishfuckitfirst(tmp, item)
+    //         delete tmp[Object.keys(tmp)[0]];
+    //         willfuckussowewishfuckitfirst(tmp, item)
+    //     }
+    // }
+
+    function getCombn(arr, pre) {
+        pre = pre || '';
+        if (!arr.length) {
+            return pre;
         }
+        var ans = arr[0].reduce(function (ans, value) {
+            return ans.concat(getCombn(arr.slice(1), pre + value));
+        }, []);
+        return ans;
     }
+
+    let alldata = [];
+    Object.keys(variationSelected).map((key) => {
+        variationSelected[key].map((v) => {
+            alldata.push({ desc: v.desc })
+        })
+
+    })
+
+
+    const clickk = () => {
+        let comb = getCombn(alldata, "");
+        console.log("f", (alldata))
+    }
+
+
+
+
     const addAtr = () => {
 
         // here call a api 
@@ -199,6 +228,17 @@ function AddProduct() {
         });
         setAttributeSelected(duplicateRemoved);
     };
+
+    const handleDefaultRow = (key, indexVs) => {
+        let varia=variationSelected;
+        varia[key].map((v) => {
+            v.defaultPicture = false
+        })
+        varia[key][indexVs].defaultPicture = true;
+        setVariationSelected(varia)
+        console.log(variationSelected)
+        forceUpdate()
+    }
 
     useEffect(() => {
         let loaded = 0
@@ -523,7 +563,7 @@ function AddProduct() {
                         <div>
 
                             {attribute.map((att, index) => {
-                                if (att.picture) {
+                                if (att.picture && Object.keys(variationSelected).length !== 0) {
                                     return (
                                         <div key={index}>
                                             <div className='fs-20 light'>{att.name} WISE</div>
@@ -533,47 +573,115 @@ function AddProduct() {
                                                     return (
                                                         <div className='flex line-pic' key={indexVs}>
                                                             <div className='col-white fs-16 bold attriute'>{vs.desc}</div>
-                                                            <div className='picture-parent' onClick={() => { UploadImg("img" + indexVs +index+1) }}>
-                                                                <input type="file" accept=".jpg,.JPG,.jpeg,.JPEG,.png,.PNG" id={"img" + indexVs +index+1} onChange={(e) => {
-                                                                    try {
-                                                                        let tmp = pictureView;
-                                                                        tmp[indexVs.toString() +index.toString()+1] = URL.createObjectURL(e.target.files[0]);
-                                                                        setpictureView(tmp);
-                                                                        let file=e.target.files[0];
-                                                                        let temp={attributeId:att.id,attributeValueId:vs.value,image:file};
-                                                                        let picfile=[...pictureFile];
-                                                                     let indexOfOld=   picfile.findIndex((e)=>{return e.attributeValueId==vs.value && e.attributeId==att.id});
-                                                                     if(indexOfOld===-1){
-                                                                        picfile.push(temp)
-                                                                     } else {
-                                                                        picfile[indexOfOld].image=file;
-                                                                     }
-                                                                        setpictureFile(picfile);
-                                                                        forceUpdate();
-                                                                    }
-                                                                    catch (ex) {
 
-                                                                    }
-                                                                }} ref={variationPic} style={{ display: "none" }} />
 
-                                                                {pictureView[indexVs.toString() +index.toString()+1] !== undefined ?
-                                                                    <div className='picture-porduct'>
-                                                                        <img src={pictureView[indexVs.toString() +index.toString()+ 1]}/>
-                                                                    </div>
-                                                                    :
-                                                                    <div className='picture-btn relative pointer'><div className='icon-btn col-black fs-18'>+</div></div>
-                                                                }
-                                                                <div className='fs-16 bold col-white center'>Default photo</div>
-                                                            </div>
-                                                            <div className='picture-parent mg-30'>
-                                                                <div className='picture-btn relative pointer'><div className='icon-btn col-black fs-18'>+</div></div>
-                                                                <div className='fs-16 col-gray center'>Default photo</div>
-                                                            </div>
                                                             <div className='picture-parent'>
-                                                                <div className='picture-btn relative pointer'><div className='icon-btn col-black fs-18'>+</div></div>
-                                                                <div className='fs-16 col-gray center'>Default photo</div>
+                                                                <div onClick={() => { UploadImg("img" + indexVs + index + 1) }}>
+                                                                    <input type="file" accept=".jpg,.JPG,.jpeg,.JPEG,.png,.PNG" id={"img" + indexVs + index + 1} onChange={(e) => {
+                                                                        try {
+                                                                            let tmp = pictureView;
+                                                                            tmp[indexVs.toString() + index.toString() + 1] = URL.createObjectURL(e.target.files[0]);
+                                                                            setpictureView(tmp);
+                                                                            let file = e.target.files[0];
+                                                                            let temp = { attributeId: att.id, attributeValueId: vs.value, image: file };
+                                                                            let picfile = [...pictureFile];
+                                                                            let indexOfOld = picfile.findIndex((e) => { return e.attributeValueId == vs.value && e.attributeId == att.id && e.file == file });
+                                                                            if (indexOfOld === -1) {
+                                                                                picfile.push(temp)
+                                                                            } else {
+                                                                                picfile[indexOfOld].image = file;
+                                                                            }
+                                                                            setpictureFile(picfile);
+                                                                            forceUpdate();
+                                                                        }
+                                                                        catch (ex) {
+
+                                                                        }
+                                                                    }} ref={variationPic} style={{ display: "none" }} />
+
+                                                                    {pictureView[indexVs.toString() + index.toString() + 1] !== undefined ?
+                                                                        <div className='picture-porduct'>
+                                                                            <img src={pictureView[indexVs.toString() + index.toString() + 1]} />
+                                                                        </div>
+                                                                        :
+                                                                        <div className='picture-btn relative pointer'><div className='icon-btn col-black fs-18'>+</div></div>
+                                                                    }
+                                                                </div>
+                                                                <div className='fs-16 center col-gray'>Default photo</div>
                                                             </div>
-                                                            <div className='align-s-center fs-16 default col-gray'>Product default photo</div>
+
+                                                            {/* picture 2 */}
+                                                            <div className='picture-parent mg-30'>
+                                                                <div onClick={() => { UploadImg("img" + indexVs + index + 2) }}>
+                                                                    <input type="file" accept=".jpg,.JPG,.jpeg,.JPEG,.png,.PNG" id={"img" + indexVs + index + 2} onChange={(e) => {
+                                                                        try {
+                                                                            let tmp = pictureView;
+                                                                            tmp[indexVs.toString() + index.toString() + 2] = URL.createObjectURL(e.target.files[0]);
+                                                                            setpictureView(tmp);
+                                                                            let file = e.target.files[0];
+                                                                            let temp = { attributeId: att.id, attributeValueId: vs.value, image: file };
+                                                                            let picfile = [...pictureFile];
+                                                                            let indexOfOld = picfile.findIndex((e) => { return e.attributeValueId == vs.value && e.attributeId == att.id && e.file == file });
+                                                                            if (indexOfOld === -1) {
+                                                                                picfile.push(temp)
+                                                                            } else {
+                                                                                picfile[indexOfOld].image = file;
+                                                                            }
+                                                                            setpictureFile(picfile);
+                                                                            forceUpdate();
+                                                                        }
+                                                                        catch (ex) {
+
+                                                                        }
+                                                                    }} ref={variationPic} style={{ display: "none" }} />
+
+                                                                    {pictureView[indexVs.toString() + index.toString() + 2] !== undefined ?
+                                                                        <div className='picture-porduct'>
+                                                                            <img src={pictureView[indexVs.toString() + index.toString() + 2]} />
+                                                                        </div>
+                                                                        :
+                                                                        <div className='picture-btn relative pointer'><div className='icon-btn col-black fs-18'>+</div></div>
+                                                                    }
+                                                                </div>
+                                                                <div className='fs-16 center col-gray'>Default photo</div>
+                                                            </div>
+
+                                                            {/* picture 3 */}
+                                                            <div className='picture-parent'>
+                                                                <div onClick={() => { UploadImg("img" + indexVs + index + 3) }}>
+                                                                    <input type="file" accept=".jpg,.JPG,.jpeg,.JPEG,.png,.PNG" id={"img" + indexVs + index + 3} onChange={(e) => {
+                                                                        try {
+                                                                            let tmp = pictureView;
+                                                                            tmp[indexVs.toString() + index.toString() + 3] = URL.createObjectURL(e.target.files[0]);
+                                                                            setpictureView(tmp);
+                                                                            let file = e.target.files[0];
+                                                                            let temp = { attributeId: att.id, attributeValueId: vs.value, image: file };
+                                                                            let picfile = [...pictureFile];
+                                                                            let indexOfOld = picfile.findIndex((e) => { return e.attributeValueId == vs.value && e.attributeId == att.id && e.file == file });
+                                                                            if (indexOfOld === -1) {
+                                                                                picfile.push(temp)
+                                                                            } else {
+                                                                                picfile[indexOfOld].image = file;
+                                                                            }
+                                                                            setpictureFile(picfile);
+                                                                            forceUpdate();
+                                                                        }
+                                                                        catch (ex) {
+
+                                                                        }
+                                                                    }} ref={variationPic} style={{ display: "none" }} />
+
+                                                                    {pictureView[indexVs.toString() + index.toString() + 3] !== undefined ?
+                                                                        <div className='picture-porduct'>
+                                                                            <img src={pictureView[indexVs.toString() + index.toString() + 3]} />
+                                                                        </div>
+                                                                        :
+                                                                        <div className='picture-btn relative pointer'><div className='icon-btn col-black fs-18'>+</div></div>
+                                                                    }
+                                                                </div>
+                                                                <div className='fs-16 center col-gray'>Default photo</div>
+                                                            </div>
+                                                            <div className={`align-s-center fs-16 center pointer ${(vs.defaultPicture)?'bold col-white ':'col-gray'}`} onClick={() => { handleDefaultRow(att.name, indexVs) }}>Product default photo</div>
                                                         </div>
                                                     )
                                                 }
