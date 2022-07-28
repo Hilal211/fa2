@@ -28,6 +28,7 @@ import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import arrow from '@/assets/images/arrow.svg';
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -65,62 +66,6 @@ function a11yProps(index) {
 
 
 function AddProduct() {
-    // data
-
-
-    const variontionDetails = [
-        {
-            id: 1,
-            name: 'Color',
-            value: [
-                {
-                    id: 1,
-                    desc: "Graphite"
-                },
-                {
-                    id: 2,
-                    desc: "Alpine Green"
-                },
-                {
-                    id: 3,
-                    desc: "Gold"
-                },
-                {
-                    id: 4,
-                    desc: "Silver"
-                },
-            ]
-        },
-        {
-            id: 2,
-            name: 'Storage capacity',
-            value: [
-                {
-                    id: 5,
-                    desc: "125 Gb"
-                },
-                {
-                    id: 6,
-                    desc: "256 Gb"
-                },
-            ]
-        },
-        {
-            id: 3,
-            name: 'Display size',
-            value: [
-                {
-                    id: 7,
-                    desc: "6''"
-                },
-                {
-                    id: 8,
-                    desc: "7.5''"
-                },
-            ]
-        },
-    ]
-
     const [brands, setBrands] = useState([])
     const [categoryMaster, setCategoryMaster] = useState([])
     const [categories, setCategories] = useState([])
@@ -146,10 +91,44 @@ function AddProduct() {
     const [variationSelected, setVariationSelected] = useState({});
     const [pictureView, setpictureView] = useState({});
     const [pictureFile, setpictureFile] = useState([]);
+    const [probability, setProbability] = useState([]);
+    const [columns, setColumns] = useState([
+        { field: 'productTag', headerName: 'PRODUCT TAG', width: 200 },
+        { field: 'upid', headerName: 'UPID', width: 200 },
+        { field: 'barcode', headerName: 'BARCODE', width: 200 },
+
+    ]);
+    const [rows, setRows] = useState([]);
+
     const [x, forceUpdate] = useReducer(x => x + 1, 0);
     const variationPic = useRef(null)
 
     const [open, setOpen] = React.useState(false);
+
+
+    const probaTable = () => {
+        let attribute = Object.keys(variationSelected);
+        let col = {};
+        attribute.map((att) => {
+            if (columns.indexOf(columns.find(col => col.field === att)) == -1){
+                col = { field: att, headerName: att, width: 200 }
+                setColumns(current => [...current, col]);
+                forceUpdate()
+            }
+        })
+
+        
+        
+    }
+    // const columns = [
+    //     { field: 'group', headerName: 'GROUP', width: 200 },
+    //     { field: 'brand', headerName: 'BRAND', width: 150 },
+    // ]
+    // const rows = [
+    //     { id: 1, group: 'APPLE_iPhone', brand: 'APPLE', masterCategory: 'ELECTRONICS', category: 'MOBILE', subCategory: 'SMARTPHONES' },
+    //     { id: 2, group: 'APPLE_Mac', brand: 'APPLE', masterCategory: 'ELECTRONICS', category: 'COMPUTERS', subCategory: 'LAPTOPS' },
+    // ]
+
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -157,54 +136,8 @@ function AddProduct() {
     const handleClose = () => {
         setOpen(false);
     };
-    // function pub() {
-    //     let tmp = variationSelected;
-    //     willfuckussowewishfuckitfirst(tmp, null)
-    // }
-    // const willfuckussowewishfuckitfirst = (object, item) => {
-    //     let tmp = object;
-    //     if (Object.keys(tmp).length === 0) {
-
-    //     } else {
-
-    //         delete tmp[Object.keys(tmp)[0]];
-    //         willfuckussowewishfuckitfirst(tmp, item)
-    //     }
-    // }
-
-    function getCombn(arr, pre) {
-        pre = pre || '';
-        if (!arr.length) {
-            return pre;
-        }
-        var ans = arr[0].reduce(function (ans, value) {
-            return ans.concat(getCombn(arr.slice(1), pre + value));
-        }, []);
-        return ans;
-    }
-
-    let alldata = [];
-    Object.keys(variationSelected).map((key) => {
-        variationSelected[key].map((v) => {
-            alldata.push({ desc: v.desc })
-        })
-
-    })
-
-
-    const clickk = () => {
-        let comb = getCombn(alldata, "");
-        console.log("f", (alldata))
-    }
-
-
-
 
     const addAtr = () => {
-
-        // here call a api 
-        // let result = variontionDetails.filter(vd => attributeSelected.some(v => v.id === vd.id));
-        // console.log(result)
         setAttribute(attributeSelected);
         setOpen(false);
     };
@@ -230,7 +163,7 @@ function AddProduct() {
     };
 
     const handleDefaultRow = (key, indexVs) => {
-        let varia=variationSelected;
+        let varia = variationSelected;
         varia[key].map((v) => {
             v.defaultPicture = false
         })
@@ -241,6 +174,7 @@ function AddProduct() {
     }
 
     useEffect(() => {
+
         let loaded = 0
         eventEmitter.emit('loading', true);
         function checkLoaded() {
@@ -309,13 +243,13 @@ function AddProduct() {
         setValueAtt(newValue);
     };
 
-    const selectVariation = (value, desc, attributeId) => {
+    const selectVariation = (value, desc, attributeId, attName) => {
         let att = attribute;
         const index = att.indexOf(att.find(x => x.id === attributeId))
         let valueS = att[index].attributeValues
         let indexS = valueS.indexOf(valueS.find(x => x.id === value))
         valueS.splice(valueS[indexS], 1)
-        let temp = { attributeId: attributeId, value: value, desc: desc };
+        let temp = { attributeId: attributeId, value: value, desc: desc, attName: attName };
         let allData = variationSelected;
         if (typeof allData[att[index].name] === "undefined")
             allData[att[index].name] = [];
@@ -324,7 +258,45 @@ function AddProduct() {
         allData[att[index].name] = tmp;
         setVariationSelected(allData);
         forceUpdate();
+
+
+        finalCom();
+
     }
+
+    // probability
+    const finalCom = () => {
+        let alldata = [];
+        Object.keys(variationSelected).map((key) => {
+            alldata.push(variationSelected[key]);
+        })
+
+        let te = getCombn(alldata, '');
+        let combination = [];
+        te.forEach((e) => {
+            let tmpObject = {};
+            let tmp = e.split('###');
+            for (var i = 0; i < tmp.length - 2; i += 2) {
+                tmpObject[tmp[i]] = tmp[i + 1];
+            }
+            combination.push(tmpObject);
+        })
+        setProbability(combination)
+        probaTable();
+    }
+    function getCombn(arr, pre) {
+        pre = pre || '';
+        if (!arr.length) {
+            return pre;
+        }
+        var ans = arr[0].reduce(function (ans, value) {
+            return ans.concat(getCombn(arr.slice(1), pre + value.attName + '###' + value.desc + "###"));
+        }, []);
+        return ans;
+    }
+
+
+
     const cancelVariation = (id, attId, index, attributeName) => {
         let att = attribute;
         const indexMain = att.indexOf(att.find(x => x.id === attId))
@@ -335,7 +307,7 @@ function AddProduct() {
         allData[attributeName] = filter
         setVariationSelected(allData);
         forceUpdate();
-
+        finalCom();
     }
     const handlePicture = (id, checked) => {
         let att = [...attribute];
@@ -359,6 +331,8 @@ function AddProduct() {
         }
         setAttribute(att)
         forceUpdate();
+
+        probaTable();
     }
 
 
@@ -528,7 +502,7 @@ function AddProduct() {
                                                 <Autocomplete
                                                     options={att.attributeValues}
                                                     getOptionLabel={(option) => option.value}
-                                                    onChange={(event, value) => { selectVariation(value.id, value.value, value.attributeId) }}
+                                                    onChange={(event, value) => { selectVariation(value.id, value.value, value.attributeId, att.name) }}
                                                     renderInput={(params) => <TextField {...params} placeholder={'ADD ' + att.name} />}
                                                     fullWidth
                                                 />
@@ -552,7 +526,7 @@ function AddProduct() {
 
                         </div>
                     }
-                    <div className="btn flex btn-next" onClick={()=>{console.log(pictureFile)}}>
+                    <div className="btn flex btn-next" onClick={() => { console.log(probability) }}>
                         <div className='text bold'>NEXT</div>
                         <div className="box-arrow"><img src={arrow} alt="" /></div>
                     </div>
@@ -681,7 +655,7 @@ function AddProduct() {
                                                                 </div>
                                                                 <div className='fs-16 center col-gray'>Default photo</div>
                                                             </div>
-                                                            <div className={`align-s-center fs-16 center pointer ${(vs.defaultPicture)?'bold col-white ':'col-gray'}`} onClick={() => { handleDefaultRow(att.name, indexVs) }}>Product default photo</div>
+                                                            <div className={`align-s-center fs-16 center pointer ${(vs.defaultPicture) ? 'bold col-white ' : 'col-gray'}`} onClick={() => { handleDefaultRow(att.name, indexVs) }}>Product default photo</div>
                                                         </div>
                                                     )
                                                 }
@@ -694,8 +668,24 @@ function AddProduct() {
                     </Typography>
 
                 </TabPanel>
+
                 <TabPanel value={value} index={2}>
-                    Item Three
+                    <div>
+                        {/* table */}
+                        <div style={{ height: 450, width: '100%' }} className='table'>
+                            <DataGrid rows={rows} columns={columns} checkboxSelection
+                                disableSelectionOnClick disableColumnFilter
+                                disableColumnSelector
+                                disableDensitySelector
+                                components={{ Toolbar: GridToolbar }}
+                                componentsProps={{
+                                    toolbar: {
+                                        showQuickFilter: true,
+                                        quickFilterProps: { debounceMs: 500 },
+                                    },
+                                }} />
+                        </div>
+                    </div>
                 </TabPanel>
             </Box>
 
