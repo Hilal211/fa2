@@ -12,7 +12,7 @@ import airtag from '@/assets/images/airtag.png'
 import tv from '@/assets/images/tv.png'
 import accessories from '@/assets/images/accessories.png'
 import plus from '@/assets/images/plus.svg'
-import Categories from '../../../component/categories/categories';
+import Categories from '../../../../component/categories/categories';
 import eventEmitter from "@/plugins/eventEmitter";
 import axios from "./api";
 import arrow from '@/assets/images/arrow.svg';
@@ -98,13 +98,13 @@ function ProfileCategories() {
         // });
 
         const newState = categoriess.map(obj => {
-            if (obj.id ==id) {
-              return {...obj, showmenu: !obj.showmenu};
-            }      
+            if (obj.id == id) {
+                return { ...obj, showmenu: !obj.showmenu };
+            }
             return obj;
-          });
-      
-          setCategoriess(newState);
+        });
+
+        setCategoriess(newState);
     }
     const deleteGroup = (id) => {
         let filter = [...categoriess].filter((cat) => cat.id !== id);
@@ -157,7 +157,7 @@ function ProfileCategories() {
             <div className="flex flex-row responsive justify-between">
                 <div className='categories border-forth-gray flex justify-between flex-wrap align-c-start'>
                     {categoriess.map((cat, index) => (
-                        <Categories key={cat.id} props={{ id: cat.id, name: cat.name, pic: cat.pic, showmenu: cat.showmenu, index: index, showMenu,deleteGroup }} />
+                        <Categories key={cat.id} props={{ id: cat.id, name: cat.name, pic: cat.pic, showmenu: cat.showmenu, index: index, showMenu, deleteGroup }} />
                     ))}
                     <div className='add-cat pointer' ><img src={plus} alt="add category" /></div>
 

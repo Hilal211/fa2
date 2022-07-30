@@ -5,7 +5,7 @@ import MuiDrawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import { useLocation } from "react-router-dom"
 import { styled, useTheme } from '@mui/material/styles';
-import { useState,useReducer } from 'react';
+import { useState, useReducer } from 'react';
 import Box from '@mui/material/Box';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -157,7 +157,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   ...theme.mixins.toolbar,
   justifyContent: 'flex-start',
 }));
-function Header({props}) {
+function Header({ props }) {
   const navigate = useNavigate();
   const location = useLocation()
   const theme = useTheme();
@@ -190,15 +190,29 @@ function Header({props}) {
           <img src={logo} alt="logo" id="logo-header" />
           <img src={logoText} alt="logo-name" id="logo-name" />
         </div>
-        <div className="flex links light align-i-center">
-          <div onClick={(e) => { navigate('/') }}>DASHBOARD</div>
-          <div onClick={(e) => { navigate('/product') }} className={props.name=== 'product' ? 'selected' : ''}>PRODUCT MASTER</div>
-          <div onClick={(e) => { navigate('/store/my-store') }} className={props.name === 'store' ? 'selected' : ''}>STORE</div>
-          <div onClick={(e) => { navigate('/') }}>CRM</div>
-          <div onClick={(e) => { navigate('/') }}>PROMOTIONS</div>
-          <div onClick={(e) => { navigate('/') }}>NEWS</div>
-          <div onClick={(e) => { navigate('/') }}>EVENTS</div>
-        </div>
+        {props.user === 'admin' ?
+
+          <div className="flex links light align-i-center">
+            <div onClick={(e) => { navigate('/') }}>DASHBOARD</div>
+            <div onClick={(e) => { navigate('/admin/product') }} className={props.name === 'adminProduct' ? 'selected' : ''}>PRODUCT MASTER</div>
+            <div onClick={(e) => { navigate('/store/my-store') }} className={props.name === 'store' ? 'selected' : ''}>STORE</div>
+            <div onClick={(e) => { navigate('/') }}>CRM</div>
+            <div onClick={(e) => { navigate('/') }}>PROMOTIONS</div>
+            <div onClick={(e) => { navigate('/') }}>NEWS</div>
+            <div onClick={(e) => { navigate('/') }}>EVENTS</div>
+          </div>
+          :
+          <div className="flex links light align-i-center">
+            <div onClick={(e) => { navigate('/') }}>DASHBOARD</div>
+            <div onClick={(e) => { navigate('/product') }} className={props.name === 'product' ? 'selected' : ''}>PRODUCT MASTER</div>
+            <div onClick={(e) => { navigate('/store/my-store') }} className={props.name === 'store' ? 'selected' : ''}>STORE</div>
+            <div onClick={(e) => { navigate('/') }}>CRM</div>
+            <div onClick={(e) => { navigate('/') }}>PROMOTIONS</div>
+            <div onClick={(e) => { navigate('/') }}>NEWS</div>
+            <div onClick={(e) => { navigate('/') }}>EVENTS</div>
+          </div>
+        }
+
         <div className="bold pointer">APPLE GCC</div>
       </header>
 
@@ -250,7 +264,7 @@ function Header({props}) {
                     <ListItemText primary={item.text} />
                   </ListItemButton>
                 </ListItem>)
-                : (<SubMenu key={index} item={item} handleClick={handleClick} index={index} openSub={openSub}/>)
+                : (<SubMenu key={index} item={item} handleClick={handleClick} index={index} openSub={openSub} />)
             ))}
           </List>
         </Drawer>
@@ -258,7 +272,7 @@ function Header({props}) {
     </div>
   );
 }
-const SubMenu = ({item,handleClick,index,openSub}) => {
+const SubMenu = ({ item, handleClick, index, openSub }) => {
   const navigate = useNavigate();
 
   return (
@@ -284,7 +298,7 @@ const SubMenu = ({item,handleClick,index,openSub}) => {
 }
 
 // SideBar Desktop
-const SideBar = ({props}) => {
+const SideBar = ({ props }) => {
   const location = useLocation()
   const navigate = useNavigate();
   const items = {
@@ -302,7 +316,15 @@ const SideBar = ({props}) => {
       { text: 'PROFILE CATEGORIES', to: '/store/profile-categories', onClick: () => navigate('/store/profile-categories') },
       { text: 'XML FEED', to: '/', onClick: () => navigate('/') },
       { text: 'SMART CART', to: '/', onClick: () => navigate('/') },
+    ],
+    "adminProduct":[
+      { text: 'PRODUCT DATABASE', to: "/admin/product", onClick: () => navigate('/admin/product') },
+      { text: 'ADD PRODUCT', to: '/admin/product/add-product', onClick: () => navigate('/admin/product/add-product') },
+      { text: 'ADD ATTRIBUTE', to: '/admin/product/attribute', onClick: () => navigate('/admin/product/attribute') },
+      { text: 'ADD ATTRIBUTE VALUE', to: '/admin/product/add-attribute-value', onClick: () => navigate('/admin/product/add-attribute-value') },
 
+      { text: 'UPLOAD PRODUCTS', to: '/', onClick: () => navigate('/') },
+      { text: 'XML FEED', to: '/', onClick: () => navigate('/') },
     ]
   };
   return (
@@ -331,9 +353,9 @@ function Layout({ children, props }) {
 
   return (
     <div className="container">
-      <Header props={props}/>
+      <Header props={props} />
       <div className="flex">
-        <SideBar props={props}/>
+        <SideBar props={props} />
         {children}
       </div>
 

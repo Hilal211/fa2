@@ -106,7 +106,7 @@ function AddProduct() {
     const [open, setOpen] = React.useState(false);
 
 
-    const probaTable = () => {
+    const probaTable = (combination) => {
         let attribute = Object.keys(variationSelected);
         let col = {};
         attribute.map((att) => {
@@ -116,8 +116,16 @@ function AddProduct() {
                 forceUpdate()
             }
         })
-
-        
+        let row=[]
+        combination.map(((pro,index)=>{
+           pro.id=index;
+           pro.productTag="ihone";
+           pro.barcode='123'
+           pro.upid='123'
+        }))
+        console.log(combination)
+        setRows(combination)
+        forceUpdate()
         
     }
     // const columns = [
@@ -282,7 +290,7 @@ function AddProduct() {
             combination.push(tmpObject);
         })
         setProbability(combination)
-        probaTable();
+        probaTable(combination);
     }
     function getCombn(arr, pre) {
         pre = pre || '';
